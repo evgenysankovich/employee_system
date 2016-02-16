@@ -75,6 +75,13 @@
        </item>
        <item>
         <widget class="QLineEdit" name="SurnameLineEdit">
+         <property name="inputMask">
+          <string/>
+         </property>
+         <property name="maxLength">
+          <number>32767</number>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
