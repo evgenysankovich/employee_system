@@ -18,8 +18,10 @@ void DataBase::connectToDataBase()
      * В зависимости от результата производим открытие базы данных или её восстановление
      * */
     if(!QFile(DATABASE_NAME).exists()){
+        qDebug()<<"Restore DB:";
         this->restoreDataBase();
     } else {
+        qDebug()<<"Open DataBase:";
         this->openDataBase();
     }
 }
@@ -29,9 +31,11 @@ void DataBase::connectToDataBase()
 bool DataBase::restoreDataBase()
 {
     if(this->openDataBase()){
-        if(!this->createDeviceTable()){
+        if(!this->createEmployeeTable()){
+            qDebug()<<"restoreDataBase: false";
             return false;
         } else {
+            qDebug()<<"restoreDataBase: true";
             return true;
         }
     } else {
@@ -54,6 +58,7 @@ bool DataBase::openDataBase()
     if(db.open()){
         return true;
     } else {
+        qDebug()<<"Cannot open database:" <<db.lastError();
         return false;
     }
 }
@@ -67,7 +72,7 @@ void DataBase::closeDataBase()
 
 /* Метод для создания таблицы устройств в базе данных
  * */
-bool DataBase::createDeviceTable()
+bool DataBase::createEmployeeTable()
 {
     /* В данном случае используется формирование сырого SQL-запроса
      * с последующим его выполнением.
@@ -75,14 +80,14 @@ bool DataBase::createDeviceTable()
     QSqlQuery query;
     if(!query.exec( "CREATE TABLE " EMPLOYEE " ("
                             "ID INTEGER PRIMARY KEY AUTOINCREMENT, "
-                            EMPLOYEE_ID_BOSS        " VARCHAR(255)    NOT NULL,"
-                            EMPLOYEE_SURNAME        " VARCHAR(30)     NOT NULL,"
-                            EMPLOYEE_HIRE_DATE      " VARCHAR(18)     NOT NULL"
-                            EMPLOYEE_BASE_SALARY    " VARCHAR(18)     NOT NULL"
-//                            EMPLOYEE_SALARY         " VARCHAR(18)     NOT NULL"
-                            EMPLOYEE_TYPE           " VARCHAR(18)     NOT NULL"
-                            EMPLOYEE_LOGIN          " VARCHAR(18)     NOT NULL"
-                            EMPLOYEE_PASSWORD       " VARCHAR(18)     NOT NULL"
+//                            EMPLOYEE_ID_BOSS        " VARCHAR(255)    NOT NULL, "
+                            EMPLOYEE_SURNAME        " VARCHAR(50)     NOT NULL, "
+                            EMPLOYEE_HIRE_DATE      " VARCHAR(50)     NOT NULL, "
+                            EMPLOYEE_BASE_SALARY    " VARCHAR(50)     NOT NULL, "
+//                            EMPLOYEE_SALARY         " VARCHAR(50)     NOT NULL, "
+                            EMPLOYEE_TYPE           " VARCHAR(50)     NOT NULL, "
+                            EMPLOYEE_LOGIN          " VARCHAR(50)     NOT NULL, "
+                            EMPLOYEE_PASSWORD       " VARCHAR(50)     NOT NULL "
                         " )"
                     )){
         qDebug() << "DataBase: error of create " << EMPLOYEE;
