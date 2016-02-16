@@ -74,7 +74,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="SurnameLineEdit"/>
+        <widget class="QLineEdit" name="SurnameLineEdit">
        </item>
       </layout>
      </item>
@@ -94,7 +94,11 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="HireDateLineEdit"/>
+        <widget class="QLineEdit" name="HireDateLineEdit">
+         <property name="inputMask">
+          <string>0000-00-00</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
