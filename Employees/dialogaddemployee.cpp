@@ -104,11 +104,13 @@ void DialogAddEmployee::on_buttonBox_accepted()
      * то диалог позволяет вставку записи в таблицу данных
      * */
     QSqlQuery query;
-    QString str = QString("SELECT " EMPLOYEE_SURNAME " FROM " EMPLOYEE
-                          " WHERE ( " EMPLOYEE_SURNAME " = '%1' "
-                          " AND id NOT LIKE '%2'" )
-            .arg(ui->SurnameLineEdit->text(),
-                 model->data(model->index(mapper->currentIndex(),0), Qt::DisplayRole).toString());
+    QString str = QString("SELECT EXISTS (SELECT " EMPLOYEE_SURNAME " FROM " EMPLOYEE
+                              " WHERE ( " EMPLOYEE_SURNAME " = '%1' )"
+                          //    " OR " EMPLOYEE_BASE_SALARY " = '%2' )"
+                              " AND id NOT LIKE '%2' )")
+                .arg(ui->SurnameLineEdit->text(),
+                  //   ui->BaseSalaryLineEdit->text(),
+                     model->data(model->index(mapper->currentIndex(),0), Qt::DisplayRole).toString());
 
     query.prepare(str);
     query.exec();
