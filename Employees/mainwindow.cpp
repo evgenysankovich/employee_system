@@ -51,6 +51,7 @@ void MainWindow::setupModel(const QString &tableName, const QStringList &headers
     modelEmployee = new QSqlTableModel(this);
     modelEmployee->setTable(tableName);
     modelEmployee->select();
+    modelEmployee->setEditStrategy(QSqlTableModel::OnFieldChange);
     /* Устанавливаем названия колонок в таблице с сортировкой данных
      * */
     for(int i = 0, j = 0; i < modelEmployee->columnCount(); i++, j++){
@@ -64,14 +65,14 @@ void MainWindow::createUI()
     ui->EmployeeTableView->setColumnHidden(0, true);    // Скрываем колонку с id записей
     // Разрешаем выделение строк
     ui->EmployeeTableView->setSelectionBehavior(QAbstractItemView::SelectRows);
-    // Устанавливаем режим выделения лишь одно строки в таблице
+//    // Устанавливаем режим выделения лишь одной строки в таблице
     ui->EmployeeTableView->setSelectionMode(QAbstractItemView::SingleSelection);
     // Устанавливаем размер колонок по содержимому
     ui->EmployeeTableView->resizeColumnsToContents();
-    ui->EmployeeTableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+  //  ui->EmployeeTableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->EmployeeTableView->horizontalHeader()->setStretchLastSection(true);
 
-    connect(ui->EmployeeTableView, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(slotEditRecord(QModelIndex)));
+//    connect(ui->EmployeeTableView, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(slotEditRecord(QModelIndex)));
 }
 
 /* Метод для активации диалога добавления записей

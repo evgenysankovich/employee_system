@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>266</width>
-    <height>253</height>
+    <height>259</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -165,7 +165,11 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="PasswordLineEdit"/>
+        <widget class="QLineEdit" name="PasswordLineEdit">
+         <property name="echoMode">
+          <enum>QLineEdit::Password</enum>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
@@ -206,10 +210,6 @@
     </widget>
    </item>
   </layout>
-  <zorder>layoutWidget</zorder>
-  <zorder>buttonBox</zorder>
-  <zorder>previousButton</zorder>
-  <zorder>nextButton</zorder>
  </widget>
  <resources/>
  <connections>

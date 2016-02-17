@@ -60,6 +60,7 @@ void DialogAddEmployee::setupModel()
     /* Ручное подтверждение изменения данных
      * через mapper
      * */
+
     mapper->setSubmitPolicy(QDataWidgetMapper::ManualSubmit);
 
     qDebug() << ui->SurnameLineEdit->text();
