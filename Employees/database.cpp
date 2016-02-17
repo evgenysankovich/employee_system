@@ -80,7 +80,7 @@ bool DataBase::createEmployeeTable()
     QSqlQuery query;
     if(!query.exec( "CREATE TABLE " EMPLOYEE " ("
                             "ID INTEGER PRIMARY KEY AUTOINCREMENT, "
-//                            EMPLOYEE_ID_BOSS        " VARCHAR(255)    NOT NULL, "
+                            EMPLOYEE_ID_BOSS        " VARCHAR(255), "
                             EMPLOYEE_SURNAME        " VARCHAR(50)     NOT NULL, "
                             EMPLOYEE_HIRE_DATE      " VARCHAR(50)     NOT NULL, "
                             EMPLOYEE_BASE_SALARY    " VARCHAR(50)     NOT NULL, "
@@ -101,7 +101,7 @@ bool DataBase::createEmployeeTable()
 
 /* Метод для вставки записи в таблицу устройств
  * */
-bool DataBase::inserIntoDeviceTable(const QVariantList &data)
+bool DataBase::inserIntoEmployeeTable(const QVariantList &data)
 {
     /* Запрос SQL формируется из QVariantList,
      * в который передаются данные для вставки в таблицу.

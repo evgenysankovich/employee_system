@@ -50,12 +50,13 @@ void DialogAddEmployee::setupModel()
      * */
     mapper = new QDataWidgetMapper();
     mapper->setModel(model);
-    mapper->addMapping(ui->SurnameLineEdit, 1);
-    mapper->addMapping(ui->HireDateLineEdit, 2);
-    mapper->addMapping(ui->BaseSalaryLineEdit, 3);
-    mapper->addMapping(ui->TypeEmployeeComboBox, 4);
-    mapper->addMapping(ui->LoginLineEdit, 5);
-    mapper->addMapping(ui->PasswordLineEdit, 6);
+//    mapper->addMapping("0");
+    mapper->addMapping(ui->SurnameLineEdit, 2);
+    mapper->addMapping(ui->HireDateLineEdit, 3);
+    mapper->addMapping(ui->BaseSalaryLineEdit, 4);
+    mapper->addMapping(ui->TypeEmployeeComboBox, 5);
+    mapper->addMapping(ui->LoginLineEdit, 6);
+    mapper->addMapping(ui->PasswordLineEdit, 7);
     /* Ручное подтверждение изменения данных
      * через mapper
      * */

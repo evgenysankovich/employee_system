@@ -34,7 +34,7 @@ public:
      * Подключение к базе данных и вставка записей в таблицу
      * */
     void connectToDataBase();
-    bool inserIntoDeviceTable(const QVariantList &data);
+    bool inserIntoEmployeeTable(const QVariantList &data);
 
 private:
     // Сам объект базы данных, с которым будет производиться работа
