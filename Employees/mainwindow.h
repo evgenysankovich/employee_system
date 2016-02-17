@@ -25,6 +25,10 @@ private slots:
     void slotUpdateModels();
     void slotEditRecord(QModelIndex index);
 
+    void on_ClearButton_clicked();
+
+    void on_ShowEmployeeButton_clicked();
+
 private:
     Ui::MainWindow              *ui;
     DataBase                    *db;

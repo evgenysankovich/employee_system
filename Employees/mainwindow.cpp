@@ -79,6 +79,7 @@ void MainWindow::createUI()
  * */
 void MainWindow::on_AddEmployeeButton_clicked()
 {
+    createUI();
     DialogAddEmployee *addEmployeeDialog = new DialogAddEmployee();
     connect(addEmployeeDialog, SIGNAL(signalReady()), this, SLOT(slotUpdateModels()));
 
@@ -111,4 +112,14 @@ void MainWindow::slotEditRecord(QModelIndex index)
      * */
 //    addDeviceEmployee->setWindowTitle(trUtf8("Редактировать Устройство"));
     addEmployeeDialog->exec();
+}
+
+void MainWindow::on_ClearButton_clicked()
+{
+    ui->EmployeeTableView->setModel(NULL);     // Устанавливаем модель на TableView
+}
+
+void MainWindow::on_ShowEmployeeButton_clicked()
+{
+    createUI();
 }

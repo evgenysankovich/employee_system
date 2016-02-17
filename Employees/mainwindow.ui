@@ -57,7 +57,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_3">
+       <widget class="QPushButton" name="ShowEmployeeButton">
         <property name="minimumSize">
          <size>
           <width>141</width>
@@ -70,7 +70,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_8">
+       <widget class="QPushButton" name="ClearButton">
         <property name="minimumSize">
          <size>
           <width>141</width>
