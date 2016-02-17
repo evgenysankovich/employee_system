@@ -84,7 +84,7 @@ bool DataBase::createEmployeeTable()
                             EMPLOYEE_SURNAME        " VARCHAR(50)     NOT NULL, "
                             EMPLOYEE_HIRE_DATE      " VARCHAR(50)     NOT NULL, "
                             EMPLOYEE_BASE_SALARY    " VARCHAR(50)     NOT NULL, "
-//                            EMPLOYEE_SALARY         " VARCHAR(50)     NOT NULL, "
+                            EMPLOYEE_SALARY         " VARCHAR(50), "
                             EMPLOYEE_TYPE           " VARCHAR(50)     NOT NULL, "
                             EMPLOYEE_LOGIN          " VARCHAR(50)     NOT NULL, "
                             EMPLOYEE_PASSWORD       " VARCHAR(50)     NOT NULL "
@@ -114,18 +114,18 @@ bool DataBase::inserIntoEmployeeTable(const QVariantList &data)
     query.prepare("INSERT INTO " EMPLOYEE " ( " EMPLOYEE_SURNAME ", "
                                               EMPLOYEE_HIRE_DATE ", "
                                               EMPLOYEE_BASE_SALARY", "
-//                                              EMPLOYEE_SALARY", "
+                                              EMPLOYEE_SALARY", "
                                               EMPLOYEE_TYPE", "
                                               EMPLOYEE_LOGIN", "
                                               EMPLOYEE_PASSWORD " ) "
-                  "VALUES (:SURNAME, :HIRE_DATE, :BASE_SALARY, :TYPE, :LOGIN, :PASSWORD )");
+                  "VALUES (:SURNAME, :HIRE_DATE, :BASE_SALARY, :SALARY :TYPE, :LOGIN, :PASSWORD )");
     query.bindValue(":SURNAME",         data[0].toString());
     query.bindValue(":HIRE_DATE",       data[1].toString());
     query.bindValue(":BASE_SALARY",     data[2].toString());
-//    query.bindValue(":SALARY",          data[3].toString());    //Пересчет зарплаты
-    query.bindValue(":TYPE",            data[3].toString());
-    query.bindValue(":LOGIN",           data[4].toString());
-    query.bindValue(":PASSWORD",        data[5].toString());
+    query.bindValue(":SALARY",          data[3].toString());    //Пересчет зарплаты
+    query.bindValue(":TYPE",            data[4].toString());
+    query.bindValue(":LOGIN",           data[5].toString());
+    query.bindValue(":PASSWORD",        data[6].toString());
     // После чего выполняется запросом методом exec()
     if(!query.exec()){
         qDebug() << "error insert into " << EMPLOYEE;

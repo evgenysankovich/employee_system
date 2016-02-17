@@ -54,9 +54,9 @@ void DialogAddEmployee::setupModel()
     mapper->addMapping(ui->SurnameLineEdit, 2);
     mapper->addMapping(ui->HireDateLineEdit, 3);
     mapper->addMapping(ui->BaseSalaryLineEdit, 4);
-    mapper->addMapping(ui->TypeEmployeeComboBox, 5);
-    mapper->addMapping(ui->LoginLineEdit, 6);
-    mapper->addMapping(ui->PasswordLineEdit, 7);
+    mapper->addMapping(ui->TypeEmployeeComboBox, 6);
+    mapper->addMapping(ui->LoginLineEdit, 7);
+    mapper->addMapping(ui->PasswordLineEdit, 8);
     /* Ручное подтверждение изменения данных
      * через mapper
      * */
