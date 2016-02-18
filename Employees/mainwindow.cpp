@@ -70,10 +70,10 @@ void MainWindow::createUI()
     ui->EmployeeTableView->setSelectionMode(QAbstractItemView::SingleSelection);
     // Устанавливаем размер колонок по содержимому
     ui->EmployeeTableView->resizeColumnsToContents();
-  //  ui->EmployeeTableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->EmployeeTableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->EmployeeTableView->horizontalHeader()->setStretchLastSection(true);
 
-//    connect(ui->EmployeeTableView, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(slotEditRecord(QModelIndex)));
+    connect(ui->EmployeeTableView, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(slotEditRecord(QModelIndex)));
 }
 
 /* Метод для активации диалога добавления записей

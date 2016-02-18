@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>682</width>
+    <width>868</width>
     <height>428</height>
    </rect>
   </property>
@@ -25,8 +25,24 @@
           <height>40</height>
          </size>
         </property>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
         <property name="text">
          <string>Добавить сотрудника</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/male.ico</normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/male.ico</iconset>
+        </property>
+        <property name="autoDefault">
+         <bool>false</bool>
+        </property>
+        <property name="default">
+         <bool>false</bool>
+        </property>
+        <property name="flat">
+         <bool>false</bool>
         </property>
        </widget>
       </item>
@@ -41,6 +57,10 @@
         <property name="text">
          <string>Добавить подчиненного</string>
         </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/boss.ico</normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/boss.ico</iconset>
+        </property>
        </widget>
       </item>
       <item>
@@ -53,6 +73,10 @@
         </property>
         <property name="text">
          <string>Посмотреть подчиненных</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/user group.ico</normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/user group.ico</iconset>
         </property>
        </widget>
       </item>
@@ -67,6 +91,10 @@
         <property name="text">
          <string>Показать сотрудников</string>
         </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/eye.ico</normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/eye.ico</iconset>
+        </property>
        </widget>
       </item>
       <item>
@@ -79,6 +107,10 @@
         </property>
         <property name="text">
          <string>Отчистить окно</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/person.ico</normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/person.ico</iconset>
         </property>
        </widget>
       </item>
@@ -102,14 +134,40 @@
     </item>
     <item row="2" column="0">
      <widget class="QPushButton" name="pushButton_6">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="minimumSize">
        <size>
         <width>141</width>
         <height>40</height>
        </size>
       </property>
+      <property name="font">
+       <font>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+        <underline>false</underline>
+        <strikeout>false</strikeout>
+        <kerning>true</kerning>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="inputMethodHints">
+       <set>Qt::ImhNone</set>
+      </property>
       <property name="text">
        <string>Вся зарплата</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/calculator.ico</normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/calculator.ico</iconset>
       </property>
      </widget>
     </item>
@@ -139,6 +197,10 @@
         <property name="text">
          <string>Сменить пользователя</string>
         </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/sync.ico</normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/sync.ico</iconset>
+        </property>
        </widget>
       </item>
       <item>
@@ -152,6 +214,10 @@
         <property name="text">
          <string>Выход</string>
         </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/close.ico</normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/close.ico</iconset>
+        </property>
        </widget>
       </item>
      </layout>
@@ -163,7 +229,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>682</width>
+     <width>868</width>
      <height>21</height>
     </rect>
    </property>

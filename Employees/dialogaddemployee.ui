@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>266</width>
-    <height>259</height>
+    <height>286</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -173,6 +173,26 @@
        </item>
       </layout>
      </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_8">
+       <item>
+        <widget class="QLabel" name="label_7">
+         <property name="minimumSize">
+          <size>
+           <width>81</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Имя Начальника</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit"/>
+       </item>
+      </layout>
+     </item>
     </layout>
    </item>
    <item row="1" column="0">
@@ -182,12 +202,20 @@
        <property name="text">
         <string>Предыдущий</string>
        </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/previous.ico</normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/previous.ico</iconset>
+       </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="nextButton">
        <property name="text">
         <string>Следующий</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/next.ico</normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/next.ico</iconset>
        </property>
       </widget>
      </item>
@@ -210,6 +238,10 @@
     </widget>
    </item>
   </layout>
+  <zorder>buttonBox</zorder>
+  <zorder>previousButton</zorder>
+  <zorder>label_7</zorder>
+  <zorder>lineEdit</zorder>
  </widget>
  <resources/>
  <connections>
