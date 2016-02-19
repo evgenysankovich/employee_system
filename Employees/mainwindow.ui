@@ -33,7 +33,7 @@
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/male.ico</normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/male.ico</iconset>
+          <normaloff>../ico/male.ico</normaloff>../ico/male.ico</iconset>
         </property>
         <property name="autoDefault">
          <bool>false</bool>
@@ -59,7 +59,7 @@
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/boss.ico</normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/boss.ico</iconset>
+          <normaloff>../ico/boss.ico</normaloff>../ico/boss.ico</iconset>
         </property>
        </widget>
       </item>
@@ -76,7 +76,7 @@
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/user group.ico</normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/user group.ico</iconset>
+          <normaloff>../ico/user group.ico</normaloff>../ico/user group.ico</iconset>
         </property>
        </widget>
       </item>
@@ -93,7 +93,7 @@
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/eye.ico</normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/eye.ico</iconset>
+          <normaloff>../ico/eye.ico</normaloff>../ico/eye.ico</iconset>
         </property>
        </widget>
       </item>
@@ -110,7 +110,10 @@
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/person.ico</normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/person.ico</iconset>
+          <normaloff>../ico/person.ico</normaloff>../ico/person.ico</iconset>
+        </property>
+        <property name="shortcut">
+         <string notr="true"/>
         </property>
        </widget>
       </item>
@@ -167,7 +170,7 @@
       </property>
       <property name="icon">
        <iconset>
-        <normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/calculator.ico</normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/calculator.ico</iconset>
+        <normaloff>../ico/calculator.ico</normaloff>../ico/calculator.ico</iconset>
       </property>
      </widget>
     </item>
@@ -199,7 +202,7 @@
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/sync.ico</normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/sync.ico</iconset>
+          <normaloff>../ico/sync.ico</normaloff>../ico/sync.ico</iconset>
         </property>
        </widget>
       </item>
@@ -216,7 +219,7 @@
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/close.ico</normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/close.ico</iconset>
+          <normaloff>../ico/close.ico</normaloff>../ico/close.ico</iconset>
         </property>
        </widget>
       </item>

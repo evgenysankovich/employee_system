@@ -22,3 +22,8 @@ int WorkerBase::timeWorkYear(QDateTime hireDate, QDateTime currentDate = QDateTi
     }
 }
 
+double WorkerBase::salaryWithoutSubordinate()
+{
+
+}
+
