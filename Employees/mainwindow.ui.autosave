@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>868</width>
+    <height>428</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QPushButton" name="AddEmployeeButton">
+        <property name="minimumSize">
+         <size>
+          <width>141</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="text">
+         <string>Добавить сотрудника</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../ico/male.ico</normaloff>../ico/male.ico</iconset>
+        </property>
+        <property name="autoDefault">
+         <bool>false</bool>
+        </property>
+        <property name="default">
+         <bool>false</bool>
+        </property>
+        <property name="flat">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="minimumSize">
+         <size>
+          <width>141</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Добавить подчиненного</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../ico/boss.ico</normaloff>../ico/boss.ico</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_7">
+        <property name="minimumSize">
+         <size>
+          <width>141</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Посмотреть подчиненных</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../ico/user group.ico</normaloff>../ico/user group.ico</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="ShowEmployeeButton">
+        <property name="minimumSize">
+         <size>
+          <width>141</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Показать сотрудников</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../ico/eye.ico</normaloff>../ico/eye.ico</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="ClearButton">
+        <property name="minimumSize">
+         <size>
+          <width>141</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Отчистить окно</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/person.ico</normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/person.ico</iconset>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="1" rowspan="2" colspan="2">
+     <widget class="QTableView" name="EmployeeTableView"/>
+    </item>
+    <item row="1" column="0">
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>74</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="2" column="0">
+     <widget class="QPushButton" name="pushButton_6">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>141</width>
+        <height>40</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+        <underline>false</underline>
+        <strikeout>false</strikeout>
+        <kerning>true</kerning>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="inputMethodHints">
+       <set>Qt::ImhNone</set>
+      </property>
+      <property name="text">
+       <string>Вся зарплата</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/calculator.ico</normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/calculator.ico</iconset>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <spacer name="horizontalSpacer">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>131</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="2" column="2">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QPushButton" name="pushButton_4">
+        <property name="minimumSize">
+         <size>
+          <width>141</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Сменить пользователя</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/sync.ico</normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/sync.ico</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_5">
+        <property name="minimumSize">
+         <size>
+          <width>141</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Выход</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/close.ico</normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/close.ico</iconset>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>868</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>

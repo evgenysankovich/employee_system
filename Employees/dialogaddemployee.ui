@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>266</width>
-    <height>286</height>
+    <height>288</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -204,7 +204,7 @@
        </property>
        <property name="icon">
         <iconset>
-         <normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/previous.ico</normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/previous.ico</iconset>
+         <normaloff>../ico/previous.ico</normaloff>../ico/previous.ico</iconset>
        </property>
       </widget>
      </item>
@@ -215,7 +215,7 @@
        </property>
        <property name="icon">
         <iconset>
-         <normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/next.ico</normaloff>../../../../downloads/24x24-free-application-icons/24x24-free-application-icons/ico/next.ico</iconset>
+         <normaloff>../ico/next.ico</normaloff>../ico/next.ico</iconset>
        </property>
       </widget>
      </item>
@@ -238,10 +238,6 @@
     </widget>
    </item>
   </layout>
-  <zorder>buttonBox</zorder>
-  <zorder>previousButton</zorder>
-  <zorder>label_7</zorder>
-  <zorder>lineEdit</zorder>
  </widget>
  <resources/>
  <connections>

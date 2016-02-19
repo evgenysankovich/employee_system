@@ -15,11 +15,13 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     dialogaddemployee.cpp \
-    database.cpp
+    database.cpp \
+    workerbase.cpp
 
 HEADERS  += mainwindow.h \
     dialogaddemployee.h \
-    database.h
+    database.h \
+    workerbase.h
 
 FORMS    += mainwindow.ui \
     dialogaddemployee.ui

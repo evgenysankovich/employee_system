@@ -17,7 +17,7 @@ public slots:
 
 public:
     int timeWorkYear(QDateTime, QDateTime);
-    virtual double salary();
+    virtual double salary() = 0;
     virtual double recursionSubordinate(double) = 0;
 
 };

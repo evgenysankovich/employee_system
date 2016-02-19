@@ -21,3 +21,4 @@ int WorkerBase::timeWorkYear(QDateTime hireDate, QDateTime currentDate = QDateTi
         return 0;
     }
 }
+
