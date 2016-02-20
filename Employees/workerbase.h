@@ -16,10 +16,9 @@ signals:
 public slots:
 
 public:
-    int timeWorkYear(QDateTime, QDateTime);
-    virtual double salaryWithoutSubordinate();
-    virtual double recursionSubordinate(double) = 0;
-
+    int timeWorkYear(QString hireDate, QString currentDate);
+    double salaryWithoutSubordinate(QString baseSalary,int timeWork, double percentYear, int maxYear);
+//    virtual double salary(double) = 0;
 };
 
 #endif // WORKERBASE_H

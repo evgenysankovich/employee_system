@@ -10,10 +10,12 @@ WorkerBase::~WorkerBase()
 
 }
 
-int WorkerBase::timeWorkYear(QDateTime hireDate, QDateTime currentDate = QDateTime::currentDateTime())
-{
+int WorkerBase::timeWorkYear(QString hireDate, QString currentDate)
+{    
+    QDateTime hDate = QDateTime::fromString(hireDate,"dd.MM.yyyy");
+    QDateTime cDate = QDateTime::fromString(currentDate,"dd.MM.yyyy");
     QDateTime tempDate;
-    tempDate.setTime_t(currentDate.toTime_t()-hireDate.toTime_t());
+    tempDate.setTime_t(cDate.toTime_t()-hDate.toTime_t());
     tempDate = tempDate.addYears(-1970);
     if (tempDate.toString("yy").toInt()) {
         return tempDate.toString("yy").toInt();
@@ -22,8 +24,14 @@ int WorkerBase::timeWorkYear(QDateTime hireDate, QDateTime currentDate = QDateTi
     }
 }
 
-double WorkerBase::salaryWithoutSubordinate()
+double WorkerBase::salaryWithoutSubordinate(QString baseSalary,int timeWork, double percentYear, int maxYear)
 {
-
+    if (timeWork > 0) {
+        if (timeWork > maxYear) {
+            timeWork = maxYear;
+        }
+        return baseSalary.toDouble() + baseSalary.toDouble() *timeWork * percentYear;
+    } else {
+        return baseSalary.toDouble();
+    }
 }
-

@@ -5,8 +5,12 @@
 #include <QSqlTableModel>
 #include <QDataWidgetMapper>
 #include <QMessageBox>
+#include <QDateTime>
 
 #include <database.h>
+#include <employee.h>
+#include <manager.h>
+#include <sales.h>
 
 namespace Ui {
 class DialogAddEmployee;
@@ -36,6 +40,12 @@ private:
     void setupModel();
     void createUI();
     void accept();
+
+public:
+    void workerSalary();
+    double employeeSalary();
+    double managerSalary();
+    double salesSalary();
 };
 
 #endif // DIALOGADDEMPLOYEE_H

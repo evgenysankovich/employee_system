@@ -16,12 +16,22 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     dialogaddemployee.cpp \
     database.cpp \
-    workerbase.cpp
+    workerbase.cpp \
+    employee.cpp \
+    manager.cpp \
+    sales.cpp
 
 HEADERS  += mainwindow.h \
     dialogaddemployee.h \
     database.h \
-    workerbase.h
+    workerbase.h \
+    employee.h \
+    manager.h \
+    sales.h
 
 FORMS    += mainwindow.ui \
     dialogaddemployee.ui
+
+RESOURCES +=
+
+CONFIG += c++11

@@ -9,6 +9,7 @@
 #include <QFile>
 #include <QDate>
 #include <QDebug>
+#include <QSqlRecord>
 
 /* Директивы имен таблицы, полей таблицы и базы данных */
 #define DATABASE_HOSTNAME   "ExampleDataBase"
@@ -35,6 +36,7 @@ public:
      * */
     void connectToDataBase();
     bool inserIntoEmployeeTable(const QVariantList &data);
+    QString findData(QString, QString);
 
 private:
     // Сам объект базы данных, с которым будет производиться работа

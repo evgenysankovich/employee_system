@@ -136,3 +136,16 @@ bool DataBase::inserIntoEmployeeTable(const QVariantList &data)
     }
     return false;
 }
+
+/* Метод для нахождения и возвращения значения выбранного поля (column)
+ * */
+QString DataBase::findData(QString sqlQuery, QString column)
+{
+    QSqlQuery query;
+    if(!query.exec(sqlQuery)) {
+        qDebug()<<"search failed";
+    }
+    QSqlRecord rec = query.record();
+    query.next();
+    return query.value(rec.indexOf(column)).toString();
+}

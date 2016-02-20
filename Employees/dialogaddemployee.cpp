@@ -51,19 +51,19 @@ void DialogAddEmployee::setupModel()
     mapper = new QDataWidgetMapper();
     mapper->setModel(model);
 //    mapper->addMapping("0");
-    mapper->addMapping(ui->SurnameLineEdit, 2);
-    mapper->addMapping(ui->HireDateLineEdit, 3);
-    mapper->addMapping(ui->BaseSalaryLineEdit, 4);
-    mapper->addMapping(ui->TypeEmployeeComboBox, 6);
-    mapper->addMapping(ui->LoginLineEdit, 7);
-    mapper->addMapping(ui->PasswordLineEdit, 8);
+    mapper->addMapping(ui->surnameLineEdit, 2);
+    mapper->addMapping(ui->hireDateLineEdit, 3);
+    mapper->addMapping(ui->baseSalaryLineEdit, 4);
+    mapper->addMapping(ui->typeEmployeeComboBox, 6);
+    mapper->addMapping(ui->loginLineEdit, 7);
+    mapper->addMapping(ui->passwordLineEdit, 8);
     /* Ручное подтверждение изменения данных
      * через mapper
      * */
 
     mapper->setSubmitPolicy(QDataWidgetMapper::ManualSubmit);
 
-    qDebug() << ui->SurnameLineEdit->text();
+    qDebug() << ui->surnameLineEdit->text();
     /* Подключаем коннекты от кнопок пролистывания
      * к прилистыванию модели данных в mapper
      * */
@@ -107,11 +107,9 @@ void DialogAddEmployee::on_buttonBox_accepted()
      * */
     QSqlQuery query;
     QString str = QString("SELECT EXISTS (SELECT " EMPLOYEE_SURNAME " FROM " EMPLOYEE
-                              " WHERE ( " EMPLOYEE_SURNAME " = '%1' )"
-                          //    " OR " EMPLOYEE_BASE_SALARY " = '%2' )"
+                              " WHERE ( " EMPLOYEE_SURNAME " = '%1' )"                          
                               " AND id NOT LIKE '%2' )")
-                .arg(ui->SurnameLineEdit->text(),
-                  //   ui->BaseSalaryLineEdit->text(),
+                .arg(ui->surnameLineEdit->text(),
                      model->data(model->index(mapper->currentIndex(),0), Qt::DisplayRole).toString());
 
     query.prepare(str);
@@ -131,14 +129,16 @@ void DialogAddEmployee::on_buttonBox_accepted()
     } else {
         mapper->submit();
         model->submitAll();
+        workerSalary();
         emit signalReady();
+
         this->close();
     }
 }
 
 void DialogAddEmployee::accept()
 {
-qDebug() << ui->SurnameLineEdit->text();
+    qDebug() << ui->surnameLineEdit->text();
 }
 
 /* Метод изменения состояния активности кнопок пролистывания
@@ -152,4 +152,54 @@ void DialogAddEmployee::updateButtons(int row)
      * */
     ui->previousButton->setEnabled(row > 0);
     ui->nextButton->setEnabled(row < model->rowCount() - 1);
+}
+
+/* Подсчет зарплаты в зависимости от должности сотрудника
+ * */
+void DialogAddEmployee::workerSalary()
+{
+    double salary;
+    QSqlQuery query;
+
+    switch (ui->typeEmployeeComboBox->currentIndex()) {
+    case 0:
+        salary = employeeSalary();
+        break;
+    case 1:
+        salary = managerSalary();
+        break;
+    case 2:
+        salary = salesSalary();
+        break;
+    default:
+        break;
+    }
+    QString str = QString ("UPDATE " EMPLOYEE
+                           " SET " EMPLOYEE_SALARY " ='%1'"
+                           " WHERE " EMPLOYEE_SURNAME " ='%2'")
+            .arg(QString::number(salary),ui->surnameLineEdit->text());
+    if(!query.exec(str)){
+        qDebug() << "error insert into " << EMPLOYEE;
+        qDebug() << query.lastError().text();
+    }
+}
+
+double DialogAddEmployee::employeeSalary()
+{
+    Employee employee;
+    QDateTime currentTime = QDateTime::currentDateTime();
+    return employee.salaryWithoutSubordinate(ui->baseSalaryLineEdit->text(),
+                                      employee.timeWorkYear(ui->hireDateLineEdit->text(),currentTime.toString("dd.MM.yyyy")),
+                                      employee.getPercentYear(),
+                                      employee.getMaxYear());
+}
+
+double DialogAddEmployee::managerSalary()
+{
+
+}
+
+double DialogAddEmployee::salesSalary()
+{
+
 }
