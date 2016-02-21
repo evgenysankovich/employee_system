@@ -6,6 +6,7 @@
 
 #include <database.h>
 #include <dialogaddemployee.h>
+#include <dialogaddsubordinate.h>
 
 namespace Ui {
 class MainWindow;
@@ -29,6 +30,8 @@ private slots:
 
     void on_ShowEmployeeButton_clicked();
 
+    void on_addSubordinateButton_clicked();
+
 private:
     Ui::MainWindow              *ui;
     DataBase                    *db;
@@ -39,7 +42,7 @@ private:
     void createUI();
 
 public:
-    void insertBossId();
+    void insertBossId(QString surnameSubordinate, QString surnameBoss);
     void workerSalary(QString id);
     double employeeSalary(QString &id);
     double managerSalary(QString &id);

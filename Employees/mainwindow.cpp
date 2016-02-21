@@ -127,21 +127,21 @@ void MainWindow::on_ShowEmployeeButton_clicked()
     createUI();
 }
 
-void MainWindow::insertBossId()
+void MainWindow::insertBossId(QString surnameSubordinate, QString surnameBoss)
 {
-//    QSqlQuery query;
-//    QString findIdFromName = QString ("SELECT ID FROM " EMPLOYEE
-//                                      " WHERE " EMPLOYEE_SURNAME " ='%1'")
-//            .arg(ui->bossLineEdit->text());
-//    QString updateIdBoss = QString ("UPDATE " EMPLOYEE
-//                           " SET " EMPLOYEE_ID_BOSS " ='%1'"
-//                           " WHERE " EMPLOYEE_SURNAME " ='%2'")
-//            .arg(findData(findIdFromName,"ID"),ui->surnameLineEdit->text());
-
-//    if(!query.exec(updateIdBoss)){
-//        qDebug() << "error insert into " << EMPLOYEE;
-//        qDebug() << query.lastError().text();
-//    }
+    QSqlQuery query;
+    QString findIdBoss = QString ("SELECT ID FROM " EMPLOYEE
+                                      " WHERE " EMPLOYEE_SURNAME " ='%1'")
+            .arg(surnameBoss);
+    QString updateSubordinateIdBoss = QString ("UPDATE " EMPLOYEE
+                           " SET " EMPLOYEE_ID_BOSS " ='%1'"
+                           " WHERE " EMPLOYEE_SURNAME " ='%2'")
+            .arg(findData(findIdBoss,"ID"),surnameSubordinate);
+    if(!query.exec(updateSubordinateIdBoss)){
+        qDebug() << "error insert into " << EMPLOYEE;
+        qDebug() << query.lastError().text();
+    }
+    slotUpdateModels();
 }
 
 /* Подсчет зарплаты в зависимости от должности сотрудника
@@ -239,4 +239,14 @@ QString MainWindow::findData(QString sqlQuery, QString column)
     QSqlRecord rec = query.record();
     query.next();
     return query.value(rec.indexOf(column)).toString();
+}
+
+void MainWindow::on_addSubordinateButton_clicked()
+{
+    QString s1,s2;
+    DialogAddSubordinate *dialogAddSubordinate = new DialogAddSubordinate();
+    if (dialogAddSubordinate->exec() == QDialog::Accepted) {
+        insertBossId(dialogAddSubordinate->surnameSubordinate(),dialogAddSubordinate->surnameBoss());
+    }
+    delete dialogAddSubordinate;
 }

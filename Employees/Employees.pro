@@ -19,7 +19,8 @@ SOURCES += main.cpp\
     workerbase.cpp \
     employee.cpp \
     manager.cpp \
-    sales.cpp
+    sales.cpp \
+    dialogaddsubordinate.cpp
 
 HEADERS  += mainwindow.h \
     dialogaddemployee.h \
@@ -27,10 +28,12 @@ HEADERS  += mainwindow.h \
     workerbase.h \
     employee.h \
     manager.h \
-    sales.h
+    sales.h \
+    dialogaddsubordinate.h
 
 FORMS    += mainwindow.ui \
-    dialogaddemployee.ui
+    dialogaddemployee.ui \
+    dialogaddsubordinate.ui
 
 RESOURCES +=
 

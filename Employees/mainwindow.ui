@@ -47,7 +47,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="addSubordinateButton">
         <property name="minimumSize">
          <size>
           <width>141</width>
