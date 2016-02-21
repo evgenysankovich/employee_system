@@ -37,6 +37,14 @@ private:
 private:
     void setupModel(const QString &tableName, const QStringList &headers);
     void createUI();
+
+public:
+    void insertBossId();
+    void workerSalary(QString id);
+    double employeeSalary(QString &id);
+    double managerSalary(QString &id);
+    double salesSalary(QString &id);
+    QString findData(QString sqlQuery, QString column);
 };
 
 #endif // MAINWINDOW_H

@@ -18,7 +18,6 @@ public slots:
 public:
     int timeWorkYear(QString hireDate, QString currentDate);
     double salaryWithoutSubordinate(QString baseSalary,int timeWork, double percentYear, int maxYear);
-
 //    virtual double salary(double) = 0;
 };
 

@@ -88,12 +88,14 @@ void MainWindow::on_AddEmployeeButton_clicked()
      * */
     //addEmployeeDialog->setWindowTitle(trUtf8("Добавить Устройство"));
     addEmployeeDialog->exec();
+//    addEmployeeDialog-
+//    addEmployeeDialog->close();
 }
 
 /* Слот обновления модели представления данных
  * */
 void MainWindow::slotUpdateModels()
-{
+{    
     modelEmployee->select();
 }
 
@@ -123,4 +125,118 @@ void MainWindow::on_ClearButton_clicked()
 void MainWindow::on_ShowEmployeeButton_clicked()
 {
     createUI();
+}
+
+void MainWindow::insertBossId()
+{
+//    QSqlQuery query;
+//    QString findIdFromName = QString ("SELECT ID FROM " EMPLOYEE
+//                                      " WHERE " EMPLOYEE_SURNAME " ='%1'")
+//            .arg(ui->bossLineEdit->text());
+//    QString updateIdBoss = QString ("UPDATE " EMPLOYEE
+//                           " SET " EMPLOYEE_ID_BOSS " ='%1'"
+//                           " WHERE " EMPLOYEE_SURNAME " ='%2'")
+//            .arg(findData(findIdFromName,"ID"),ui->surnameLineEdit->text());
+
+//    if(!query.exec(updateIdBoss)){
+//        qDebug() << "error insert into " << EMPLOYEE;
+//        qDebug() << query.lastError().text();
+//    }
+}
+
+/* Подсчет зарплаты в зависимости от должности сотрудника
+ * */
+void MainWindow::workerSalary(QString id)
+{
+    double salary;
+    QSqlQuery query;
+    QString typeWorker = QString ("SELECT " EMPLOYEE_TYPE " FROM " EMPLOYEE
+                                  " WHERE ID ='%1'")
+            .arg(id);
+    typeWorker = findData(typeWorker,EMPLOYEE_TYPE);
+    if(typeWorker == "Employee") {
+        salary = employeeSalary(id);
+    } else if(typeWorker == "Manager") {
+        salary = managerSalary(id);
+    } else if(typeWorker == "Sales") {
+        salary = salesSalary(id);
+    }
+
+    QString employeeSurname = QString ("SELECT " EMPLOYEE_SURNAME " FROM " EMPLOYEE
+                                       " WHERE ID ='%1';")
+            .arg(id);
+    QString updateSalary = QString ("UPDATE " EMPLOYEE
+                           " SET " EMPLOYEE_SALARY " ='%1'"
+                           " WHERE " EMPLOYEE_SURNAME " ='%2'")
+            .arg(QString::number(salary),findData(employeeSurname,EMPLOYEE_SURNAME));
+    if(!query.exec(updateSalary)){
+        qDebug() << "error insert into " << EMPLOYEE;
+        qDebug() << query.lastError().text();
+    }
+    QString idBoss = QString ("SELECT " EMPLOYEE_ID_BOSS " FROM " EMPLOYEE
+                              " WHERE ID ='%1';")
+            .arg(id);
+    int idBossInt = findData(idBoss,EMPLOYEE_ID_BOSS).toInt();
+    if (idBossInt) {
+        qDebug() <<"check";
+        workerSalary(QString::number(idBossInt,10));
+    }
+}
+
+/* Подсчет зарплаты для Employee
+ * */
+double MainWindow::employeeSalary(QString &id)
+{
+    Employee employee;
+    QString baseSalary = QString ("SELECT " EMPLOYEE_BASE_SALARY " FROM " EMPLOYEE
+                            " WHERE ID ='%1';")
+            .arg(id);
+    QString hireDate = QString ("SELECT " EMPLOYEE_HIRE_DATE " FROM " EMPLOYEE
+                                " WHERE ID ='%1';")
+                .arg(id);
+    return employee.salaryWithoutSubordinate(findData(baseSalary,EMPLOYEE_BASE_SALARY),
+                                             employee.timeWorkYear(findData(hireDate,EMPLOYEE_HIRE_DATE),QDateTime::currentDateTime().toString("dd.MM.yyyy")),
+                                             employee.getPercentYear(),
+                                             employee.getMaxYear());
+}
+
+/* Подсчет зарплаты для Manager
+ * */
+double MainWindow::managerSalary(QString &id)
+{
+    Manager manager;
+    QString baseSalary = QString ("SELECT " EMPLOYEE_BASE_SALARY " FROM " EMPLOYEE
+                            " WHERE ID ='%1';")
+            .arg(id);
+    QString hireDate = QString ("SELECT " EMPLOYEE_HIRE_DATE " FROM " EMPLOYEE
+                                " WHERE ID ='%1';")
+                .arg(id);
+
+    double salary = manager.salaryWithoutSubordinate(findData(baseSalary,EMPLOYEE_BASE_SALARY),
+                                                     manager.timeWorkYear(findData(hireDate,EMPLOYEE_HIRE_DATE),QDateTime::currentDateTime().toString("dd.MM.yyyy")),
+                                                     manager.getPercentYear(),
+                                                     manager.getMaxYear());
+    salary += manager.firstLevelSubordinate(id);
+    return salary;
+}
+
+/* Подсчет зарплаты для Salary
+ * */
+double MainWindow::salesSalary(QString &id)
+{
+
+}
+
+/* Метод для нахождения и возвращения значения выбранного поля (column)
+ * */
+QString MainWindow::findData(QString sqlQuery, QString column)
+{
+    QSqlQuery query;
+    if(!query.exec(sqlQuery)) {
+        qDebug()<<"search failed";
+        qDebug()<<query.lastError().text();
+    }
+    QSqlRecord rec = query.record();
+    query.next();
+    return query.value(rec.indexOf(column)).toString();
 }

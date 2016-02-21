@@ -42,12 +42,10 @@ private:
     void accept();
 
 public:
-    void workerSalary(QString id);
-    double employeeSalary(QString &id);
-    double managerSalary(QString &id);
-    double salesSalary(QString &id);
-    QString findData(QString sqlQuery, QString column);
-    void insertBossId();
+    void salary();
+    double employeeSalary();
+    double managerSalary();
+    double salesSalary();
 };
 
 #endif // DIALOGADDEMPLOYEE_H
