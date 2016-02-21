@@ -35,3 +35,4 @@ double WorkerBase::salaryWithoutSubordinate(QString baseSalary,int timeWork, dou
         return baseSalary.toDouble();
     }
 }
+

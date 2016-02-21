@@ -36,7 +36,7 @@ public:
      * */
     void connectToDataBase();
     bool inserIntoEmployeeTable(const QVariantList &data);
-    QString findData(QString, QString);
+//    QString findData(QString sqlQuery, QString column);
 
 private:
     // Сам объект базы данных, с которым будет производиться работа
