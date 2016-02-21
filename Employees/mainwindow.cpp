@@ -86,7 +86,7 @@ void MainWindow::on_AddEmployeeButton_clicked()
 
     /* Выполняем запуск диалогового окна
      * */
-    //addEmployeeDialog->setWindowTitle(trUtf8("Добавить Устройство"));
+    addEmployeeDialog->setWindowTitle(trUtf8("Добавить подчиненного"));
     addEmployeeDialog->exec();
 //    addEmployeeDialog-
 //    addEmployeeDialog->close();
@@ -113,7 +113,7 @@ void MainWindow::slotEditRecord(QModelIndex index)
 
     /* Выполняем запуск диалогового окна
      * */
-//    addDeviceEmployee->setWindowTitle(trUtf8("Редактировать Устройство"));
+    addEmployeeDialog->setWindowTitle(trUtf8("Редактировать подчиненного"));
     addEmployeeDialog->exec();
 }
 
@@ -245,6 +245,7 @@ void MainWindow::on_addSubordinateButton_clicked()
 {
     QString s1,s2;
     DialogAddSubordinate *dialogAddSubordinate = new DialogAddSubordinate();
+    dialogAddSubordinate->setWindowTitle("Добавить подчиненного");
     if (dialogAddSubordinate->exec() == QDialog::Accepted) {
         insertBossId(dialogAddSubordinate->surnameSubordinate(),dialogAddSubordinate->surnameBoss());
     }
