@@ -46,11 +46,13 @@ private:
 
 public:
     void insertBossId(QString surnameSubordinate, QString surnameBoss);
-    void workerSalary(QString id);
+    void workerSalary(QString idBoss);
     double employeeSalary(QString &id);
     double managerSalary(QString &id);
     double salesSalary(QString &id);
+    double recursionSalaryForSubordinate(double resultRecursion, QString &id);
     QString findData(QString sqlQuery, QString column);
+
 };
 
 #endif // MAINWINDOW_H

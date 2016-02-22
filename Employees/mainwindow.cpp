@@ -154,24 +154,26 @@ void MainWindow::insertBossId(QString surnameSubordinate, QString surnameBoss)
 
 /* Подсчет зарплаты в зависимости от должности сотрудника
  * */
-void MainWindow::workerSalary(QString id)
+void MainWindow::workerSalary(QString idBoss)
 {
     double salary;
     QSqlQuery query;
     QString typeWorker = QString ("SELECT " EMPLOYEE_TYPE " FROM " EMPLOYEE
                                   " WHERE ID ='%1'")
-            .arg(id);
+            .arg(idBoss);
+
     typeWorker = findData(typeWorker,EMPLOYEE_TYPE);
     if(typeWorker == "Manager") {
-        qDebug()<<"manager: ";
-        salary = managerSalary(id);
+        salary = managerSalary(idBoss);
+        qDebug()<<"Тип Manager ";
     } else if(typeWorker == "Sales") {
-        salary = salesSalary(id);
+        qDebug()<<"Тип Sales ";
+        salary = salesSalary(idBoss);
     }
 
     QString employeeSurname = QString ("SELECT " EMPLOYEE_SURNAME " FROM " EMPLOYEE
                                        " WHERE ID ='%1';")
-            .arg(id);
+            .arg(idBoss);
     QString updateSalary = QString ("UPDATE " EMPLOYEE
                                     " SET " EMPLOYEE_SALARY " ='%1'"
                                                             " WHERE " EMPLOYEE_SURNAME " ='%2'")
@@ -180,10 +182,10 @@ void MainWindow::workerSalary(QString id)
         qDebug() << "error insert into " << EMPLOYEE;
         qDebug() << query.lastError().text();
     }
-    QString idBoss = QString ("SELECT " EMPLOYEE_ID_BOSS " FROM " EMPLOYEE
+    QString strIdBoss = QString ("SELECT " EMPLOYEE_ID_BOSS " FROM " EMPLOYEE
                               " WHERE ID ='%1';")
-            .arg(id);
-    int idBossInt = findData(idBoss,EMPLOYEE_ID_BOSS).toInt();
+            .arg(idBoss);
+    int idBossInt = findData(strIdBoss,EMPLOYEE_ID_BOSS).toInt();
     if (idBossInt) {
         qDebug() <<"check";
         workerSalary(QString::number(idBossInt,10));
@@ -214,7 +216,42 @@ double MainWindow::managerSalary(QString &id)
  * */
 double MainWindow::salesSalary(QString &id)
 {
+    Sales sales;
+    QString baseSalary = QString ("SELECT " EMPLOYEE_BASE_SALARY " FROM " EMPLOYEE
+                                  " WHERE ID ='%1';")
+            .arg(id);
+    QString hireDate = QString ("SELECT " EMPLOYEE_HIRE_DATE " FROM " EMPLOYEE
+                                " WHERE ID ='%1';")
+            .arg(id);
 
+    double salary = sales.salaryWithoutSubordinate(findData(baseSalary,EMPLOYEE_BASE_SALARY),
+                                                     sales.timeWorkYear(findData(hireDate,EMPLOYEE_HIRE_DATE),QDateTime::currentDateTime().toString("dd.MM.yyyy")),
+                                                     sales.getPercentYear(),
+                                                     sales.getMaxYear());
+    double resultRecursion =0;
+    resultRecursion = recursionSalaryForSubordinate(resultRecursion, id);
+    return salary + resultRecursion * sales.getPercentSubordinate();
+}
+
+double MainWindow::recursionSalaryForSubordinate(double resultRecursion, QString &id)
+{
+    resultRecursion = 0;
+    QString str = QString ("SELECT ID, " EMPLOYEE_SALARY " FROM " EMPLOYEE
+                           " WHERE " EMPLOYEE_ID_BOSS " ='%1';")
+            .arg(id);
+    QSqlQuery query;
+
+    if(query.exec(str)) {
+        QSqlRecord rec;
+        QString currentId;
+        rec = query.record();
+        while (query.next()){
+            currentId = query.value(rec.indexOf("ID")).toString();
+            resultRecursion += recursionSalaryForSubordinate(resultRecursion, currentId);
+            resultRecursion += query.value(rec.indexOf(EMPLOYEE_SALARY)).toDouble();
+        }
+    }
+    return resultRecursion;
 }
 
 /* Метод для нахождения и возвращения значения выбранного поля (column)
@@ -232,8 +269,7 @@ QString MainWindow::findData(QString sqlQuery, QString column)
 }
 
 void MainWindow::on_addSubordinateButton_clicked()
-{
-    QString s1,s2;
+{    
     DialogAddSubordinate *dialogAddSubordinate = new DialogAddSubordinate();
     dialogAddSubordinate->setWindowTitle("Добавить подчиненного");
     if (dialogAddSubordinate->exec() == QDialog::Accepted) {
@@ -242,7 +278,7 @@ void MainWindow::on_addSubordinateButton_clicked()
                                      " WHERE " EMPLOYEE_SURNAME " ='%1';")
                 .arg(dialogAddSubordinate->surnameBoss());
         workerSalary(findData(strIdBoss,"ID"));
-         slotUpdateModels();
+        slotUpdateModels();
     }
     delete dialogAddSubordinate;
 }

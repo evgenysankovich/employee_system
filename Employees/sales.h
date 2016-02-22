@@ -15,7 +15,7 @@ public:
 
     double getPercentYear();
     double getPercentSubordinate();
-    int getMaxYear();
+    int getMaxYear();    
 };
 
 #endif // SALES_H
