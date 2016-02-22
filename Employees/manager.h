@@ -16,7 +16,7 @@ public:
     double getPercentYear();
 //    double getPercentSubordinate();
     int getMaxYear();
-    double firstLevelSubordinate(QString id);
+    double firstLevelSubordinate(QString &id);
 };
 
 #endif // MANAGER_H

@@ -136,7 +136,7 @@
      </spacer>
     </item>
     <item row="2" column="0">
-     <widget class="QPushButton" name="pushButton_6">
+     <widget class="QPushButton" name="allSalaryButton">
       <property name="enabled">
        <bool>true</bool>
       </property>

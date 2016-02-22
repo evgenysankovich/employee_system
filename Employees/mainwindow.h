@@ -7,6 +7,7 @@
 #include <database.h>
 #include <dialogaddemployee.h>
 #include <dialogaddsubordinate.h>
+#include <QMessageBox>
 
 namespace Ui {
 class MainWindow;
@@ -31,6 +32,8 @@ private slots:
     void on_ShowEmployeeButton_clicked();
 
     void on_addSubordinateButton_clicked();
+
+    void on_allSalaryButton_clicked();
 
 private:
     Ui::MainWindow              *ui;

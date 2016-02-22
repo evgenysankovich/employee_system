@@ -25,9 +25,8 @@ int Manager::getMaxYear()
     return maxYear;
 }
 
-double Manager::firstLevelSubordinate(QString id)
-{
-    double salary = 0;
+double Manager::firstLevelSubordinate(QString &id)
+{    
     QString sqlIdBoss = QString ("SELECT " EMPLOYEE_SALARY
                                  " FROM " EMPLOYEE
                                  " WHERE " EMPLOYEE_ID_BOSS " ='%1';")
@@ -38,6 +37,7 @@ double Manager::firstLevelSubordinate(QString id)
         qDebug() << "dont find";
         qDebug() << query.lastError().text();
     }
+    double salary = 0;
     QSqlRecord rec = query.record();
     while (query.next()) {
         salary += percentSubordinate * query.value(rec.indexOf(EMPLOYEE_SALARY)).toDouble();
