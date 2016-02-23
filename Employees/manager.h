@@ -5,18 +5,18 @@
 
 class Manager: public WorkerBase {
 private:
-    double percentYear = 0.05;
-    double percentSubordinate = 0.005;
-    int maxYear = 8;
+    const double percentYear = 0.05;
+    const double percentSubordinate = 0.005;
+    const int maxYear = 8;
 
 public:
     Manager();
     ~Manager();
 
     double getPercentYear();
-//    double getPercentSubordinate();
+    double getPercentSubordinate();
     int getMaxYear();
-    double firstLevelSubordinate(QString &id);
+//    double firstLevelSubordinate(QString &id);
 };
 
 #endif // MANAGER_H

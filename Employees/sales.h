@@ -5,9 +5,9 @@
 
 class Sales: public WorkerBase {
 private:
-    double percentYear = 0.01;
-    double percentSubordinate = 0.003;
-    int maxYear = 35;
+    const double percentYear = 0.01;
+    const double percentSubordinate = 0.003;
+    const int maxYear = 35;
 
 public:
     Sales();
@@ -15,7 +15,7 @@ public:
 
     double getPercentYear();
     double getPercentSubordinate();
-    int getMaxYear();    
+    int getMaxYear();
 };
 
 #endif // SALES_H

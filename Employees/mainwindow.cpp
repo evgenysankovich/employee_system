@@ -208,7 +208,22 @@ double MainWindow::managerSalary(QString &id)
                                                      manager.timeWorkYear(findData(hireDate,EMPLOYEE_HIRE_DATE),QDateTime::currentDateTime().toString("dd.MM.yyyy")),
                                                      manager.getPercentYear(),
                                                      manager.getMaxYear());
-    salary += manager.firstLevelSubordinate(id);
+
+    QString sqlIdBoss = QString ("SELECT " EMPLOYEE_SALARY
+                                 " FROM " EMPLOYEE
+                                 " WHERE " EMPLOYEE_ID_BOSS " ='%1';")
+            .arg(id);
+    qDebug()<<sqlIdBoss;
+    QSqlQuery query;
+    if(!query.exec(sqlIdBoss)) {
+        qDebug() << "dont find";
+        qDebug() << query.lastError().text();
+    }
+
+    QSqlRecord rec = query.record();
+    while (query.next()) {
+        salary += manager.getPercentSubordinate() * query.value(rec.indexOf(EMPLOYEE_SALARY)).toDouble();
+    }
     return salary;
 }
 

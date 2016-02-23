@@ -42,10 +42,8 @@ private:
     void accept();
 
 public:
-    void salary();
-    double employeeSalary();
-    double managerSalary();
-    double salesSalary();
+    void salary(); 
+    double workerSalary(WorkerBase *base);
 };
 
 #endif // DIALOGADDEMPLOYEE_H

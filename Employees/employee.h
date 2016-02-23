@@ -5,8 +5,8 @@
 
 class Employee: public WorkerBase {
 private:
-    double percentYear = 0.03;
-    int maxYear = 10;
+    const double percentYear = 0.03;
+    const int maxYear = 10;
 
 public:
     Employee();

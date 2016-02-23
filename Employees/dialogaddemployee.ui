@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>266</width>
+    <width>263</width>
     <height>260</height>
    </rect>
   </property>
@@ -14,6 +14,32 @@
    <string>Dialog</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <item row="1" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout_7">
+     <item>
+      <widget class="QPushButton" name="previousButton">
+       <property name="text">
+        <string>Предыдущий</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../ico/previous.ico</normaloff>../ico/previous.ico</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="nextButton">
+       <property name="text">
+        <string>Следующий</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../ico/next.ico</normaloff>../ico/next.ico</iconset>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
    <item row="0" column="0">
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
@@ -103,7 +129,7 @@
        <item>
         <widget class="QLineEdit" name="hireDateLineEdit">
          <property name="inputMask">
-          <string/>
+          <string>00-00-0000</string>
          </property>
         </widget>
        </item>
@@ -172,32 +198,6 @@
         </widget>
        </item>
       </layout>
-     </item>
-    </layout>
-   </item>
-   <item row="1" column="0">
-    <layout class="QHBoxLayout" name="horizontalLayout_7">
-     <item>
-      <widget class="QPushButton" name="previousButton">
-       <property name="text">
-        <string>Предыдущий</string>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>../ico/previous.ico</normaloff>../ico/previous.ico</iconset>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="nextButton">
-       <property name="text">
-        <string>Следующий</string>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>../ico/next.ico</normaloff>../ico/next.ico</iconset>
-       </property>
-      </widget>
      </item>
     </layout>
    </item>

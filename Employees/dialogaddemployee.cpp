@@ -74,7 +74,7 @@ void DialogAddEmployee::setupModel()
     connect(mapper, SIGNAL(currentIndexChanged(int)), this, SLOT(updateButtons(int)));
 }
 
-/* Метод для установки валидатора на поле ввода IP и MAC адресов
+/* Метод для установки валидатора на полях ввода
  * */
 void DialogAddEmployee::createUI()
 {
@@ -82,36 +82,24 @@ void DialogAddEmployee::createUI()
     QRegExpValidator *surVal = new QRegExpValidator(surnameRegex, this);
     ui->surnameLineEdit->setValidator(surVal);
 
-    QRegExp dateRegex ("^(((0[1-9]|[12]\\d|3[01])\\.(0[13578]|1[02])\\."
-                       "((19|[2-9]\\d)\\d{2}))|((0[1-9]|[12]\\d|30)\\."
-                       "(0[13456789]|1[012])\\.((19|[2-9]\\d)\\d{2}))|"
-                       "((0[1-9]|1\\d|2[0-8])\\.02\\.((19|[2-9]\\d)\\d{2}))|"
-                       "(29\\.02\\.((1[6-9]|[2-9]\\d)(0[48]|[2468][048]|[13579][26])|"
-                       "((16|[2468][048]|[3579][26])00))))$");
-    QRegExpValidator *dateVal = new QRegExpValidator(dateRegex, this);
-    ui->hireDateLineEdit->setValidator(dateVal);
+//    QRegExp dateRegex ("^(((0[1-9]|[12]\\d|3[01])\\.(0[13578]|1[02])\\."
+//                       "((19|[2-9]\\d)\\d{2}))|((0[1-9]|[12]\\d|30)\\."
+//                       "(0[13456789]|1[012])\\.((19|[2-9]\\d)\\d{2}))|"
+//                       "((0[1-9]|1\\d|2[0-8])\\.02\\.((19|[2-9]\\d)\\d{2}))|"
+//                       "(29\\.02\\.((1[6-9]|[2-9]\\d)(0[48]|[2468][048]|[13579][26])|"
+//                       "((16|[2468][048]|[3579][26])00))))$");
+//        QRegExp dateRegex ("^(((0[1-9]|[12]\\d|3[01])(0[13578]|1[02])"
+//                           "((19|[2-9]\\d)\\d{2}))|((0[1-9]|[12]\\d|30)"
+//                           "(0[13456789]|1[012])((19|[2-9]\\d)\\d{2}))|"
+//                           "((0[1-9]|1\\d|2[0-8])02((19|[2-9]\\d)\\d{2}))|"
+//                           "(29 02((1[6-9]|[2-9]\\d)(0[48]|[2468][048]|[13579][26])|"
+//                           "((16|[2468][048]|[3579][26])00))))$");
+//    QRegExpValidator *dateVal = new QRegExpValidator(dateRegex, this);
+//    ui->hireDateLineEdit->setValidator(dateVal);
 
-    QRegExp baseSalaryRegex ("\\-?\\d+(\\.\\d{0,})? ");
+    QRegExp baseSalaryRegex ("\\-?\\d+(\\.\\d{0,})?");
     QRegExpValidator *baseSalaryVal = new QRegExpValidator(baseSalaryRegex, this);
     ui->baseSalaryLineEdit->setValidator(baseSalaryVal);
-
-//    QString ipRange = "(?:[0-1]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])";
-//    QRegExp ipRegex ("^" + ipRange
-//                     + "\\." + ipRange
-//                     + "\\." + ipRange
-//                     + "\\." + ipRange + "$");
-//    QRegExpValidator *ipValidator = new QRegExpValidator(ipRegex, this);
-//    ui->IPAddressLineEdit->setValidator(ipValidator);
-
-//    QString macRange = "(?:[0-9A-Fa-f][0-9A-Fa-f])";
-//    QRegExp macRegex ("^" + macRange
-//                      + "\\:" + macRange
-//                      + "\\:" + macRange
-//                      + "\\:" + macRange
-//                      + "\\:" + macRange
-//                      + "\\:" + macRange + "$");
-//    QRegExpValidator *macValidator = new QRegExpValidator(macRegex, this);
-//    ui->MACLineEdit->setValidator(macValidator);
 }
 
 void DialogAddEmployee::on_buttonBox_accepted()
@@ -165,13 +153,22 @@ void DialogAddEmployee::salary()
 
     switch (ui->typeEmployeeComboBox->currentIndex()) {
     case 0:
-        salary = employeeSalary();
+    {
+        Employee emp;
+        salary = workerSalary(&emp);
+    }
         break;
     case 1:
-        salary = managerSalary();
+    {
+        Manager manager;
+        salary = workerSalary(&manager);
+    }
         break;
     case 2:
-        salary = salesSalary();
+    {
+        Sales sales;
+        salary = workerSalary(&sales);
+    }
         break;
     default:
         break;
@@ -186,34 +183,13 @@ void DialogAddEmployee::salary()
     }
 }
 
-double DialogAddEmployee::employeeSalary()
+double DialogAddEmployee::workerSalary(WorkerBase *base)
 {
-    Employee employee;
     QDateTime currentTime = QDateTime::currentDateTime();
-    return employee.salaryWithoutSubordinate(ui->baseSalaryLineEdit->text(),
-                                             employee.timeWorkYear(ui->hireDateLineEdit->text(),currentTime.toString("dd.MM.yyyy")),
-                                             employee.getPercentYear(),
-                                             employee.getMaxYear());
-}
-
-double DialogAddEmployee::managerSalary()
-{
-    Manager manager;
-    QDateTime currentTime = QDateTime::currentDateTime();
-    return manager.salaryWithoutSubordinate(ui->baseSalaryLineEdit->text(),
-                                             manager.timeWorkYear(ui->hireDateLineEdit->text(),currentTime.toString("dd.MM.yyyy")),
-                                             manager.getPercentYear(),
-                                             manager.getMaxYear());
-}
-
-double DialogAddEmployee::salesSalary()
-{
-    Sales sales;
-    QDateTime currentTime = QDateTime::currentDateTime();
-    return sales.salaryWithoutSubordinate(ui->baseSalaryLineEdit->text(),
-                                             sales.timeWorkYear(ui->hireDateLineEdit->text(),currentTime.toString("dd.MM.yyyy")),
-                                             sales.getPercentYear(),
-                                             sales.getMaxYear());
+    return base->salaryWithoutSubordinate(ui->baseSalaryLineEdit->text(),
+                                          base->timeWorkYear(ui->hireDateLineEdit->text(),currentTime.toString("dd.MM.yyyy")),
+                                          base->getPercentYear(),
+                                          base->getMaxYear());
 }
 
 /* Метод изменения состояния активности кнопок пролистывания
