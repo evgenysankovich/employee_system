@@ -42,7 +42,7 @@ private:
     void accept();
 
 public:
-    void salary(); 
+    void salary();
     double workerSalary(WorkerBase *base);
 };
 

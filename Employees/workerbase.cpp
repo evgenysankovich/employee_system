@@ -10,6 +10,8 @@ WorkerBase::~WorkerBase()
 
 }
 
+/* Метод для нахождения времени работы сотрудника
+ * */
 int WorkerBase::timeWorkYear(QString hireDate, QString currentDate)
 {    
     QDateTime hDate = QDateTime::fromString(hireDate,"dd.MM.yyyy");
@@ -24,6 +26,8 @@ int WorkerBase::timeWorkYear(QString hireDate, QString currentDate)
     }
 }
 
+/* Метод для подсчета зарплаты без подчиненных
+ * */
 double WorkerBase::salaryWithoutSubordinate(QString baseSalary,int timeWork, double percentYear, int maxYear)
 {
     if (timeWork > 0) {

@@ -13,8 +13,6 @@ MainWindow::MainWindow(QWidget *parent) :
     db = new DataBase();
     db->connectToDataBase();
 
-
-
     /* Инициализируем модели для представления данных
      * с заданием названий колонок
      * */
@@ -66,7 +64,7 @@ void MainWindow::createUI()
     ui->EmployeeTableView->setColumnHidden(0, true);    // Скрываем колонку с id записей
     // Разрешаем выделение строк
     ui->EmployeeTableView->setSelectionBehavior(QAbstractItemView::SelectRows);
-    //    // Устанавливаем режим выделения лишь одной строки в таблице
+    // Устанавливаем режим выделения лишь одной строки в таблице
     ui->EmployeeTableView->setSelectionMode(QAbstractItemView::SingleSelection);
     // Устанавливаем размер колонок по содержимому
     ui->EmployeeTableView->resizeColumnsToContents();
@@ -76,7 +74,7 @@ void MainWindow::createUI()
     connect(ui->EmployeeTableView, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(slotEditRecord(QModelIndex)));
 }
 
-/* Метод для активации диалога добавления записей
+/* Метод для активации диалога добавления сотрудников
  * */
 void MainWindow::on_AddEmployeeButton_clicked()
 {
@@ -87,7 +85,7 @@ void MainWindow::on_AddEmployeeButton_clicked()
     /* Выполняем запуск диалогового окна
      * */
     addEmployeeDialog->setWindowTitle("Добавить подчиненного");
-    addEmployeeDialog->exec();   
+    addEmployeeDialog->exec();
 }
 
 /* Слот обновления модели представления данных
@@ -115,16 +113,8 @@ void MainWindow::slotEditRecord(QModelIndex index)
     addEmployeeDialog->exec();
 }
 
-//void MainWindow::on_ClearButton_clicked()
-//{
-//    ui->EmployeeTableView->setModel(NULL);     // Устанавливаем модель на TableView
-//}
-
-//void MainWindow::on_ShowEmployeeButton_clicked()
-//{
-//    createUI();
-//}
-
+/* Вставка ID босса подчиненному
+ * */
 void MainWindow::insertBossId(QString surnameSubordinate, QString surnameBoss)
 {
     QString typeWorker = QString ("SELECT " EMPLOYEE_TYPE " FROM " EMPLOYEE
@@ -181,9 +171,11 @@ void MainWindow::workerSalary(QString idBoss)
         qDebug() << query.lastError().text();
     }
     QString strIdBoss = QString ("SELECT " EMPLOYEE_ID_BOSS " FROM " EMPLOYEE
-                              " WHERE ID ='%1';")
+                                 " WHERE ID ='%1';")
             .arg(idBoss);
     int idBossInt = findData(strIdBoss,EMPLOYEE_ID_BOSS).toInt();
+    /* Если у начальника есть начальник стоящий выше, идет перерасчет зарплаты для вышестоящего.
+     * */
     if (idBossInt) {
         qDebug() <<"check";
         workerSalary(QString::number(idBossInt,10));
@@ -238,9 +230,9 @@ double MainWindow::salesSalary(QString &id)
             .arg(id);
 
     double salary = sales.salaryWithoutSubordinate(findData(baseSalary,EMPLOYEE_BASE_SALARY),
-                                                     sales.timeWorkYear(findData(hireDate,EMPLOYEE_HIRE_DATE),QDateTime::currentDateTime().toString("dd.MM.yyyy")),
-                                                     sales.getPercentYear(),
-                                                     sales.getMaxYear());
+                                                   sales.timeWorkYear(findData(hireDate,EMPLOYEE_HIRE_DATE),QDateTime::currentDateTime().toString("dd.MM.yyyy")),
+                                                   sales.getPercentYear(),
+                                                   sales.getMaxYear());
     double resultRecursion =0;
     resultRecursion = recursionSalaryForSubordinate(resultRecursion, id);
     return salary + resultRecursion * sales.getPercentSubordinate();
@@ -281,6 +273,8 @@ QString MainWindow::findData(QString sqlQuery, QString column)
     return query.value(rec.indexOf(column)).toString();
 }
 
+/* Метод для добавления начальника
+ * */
 void MainWindow::on_addSubordinateButton_clicked()
 {
     DialogAddSubordinate *dialogAddSubordinate = new DialogAddSubordinate();
@@ -296,6 +290,8 @@ void MainWindow::on_addSubordinateButton_clicked()
     delete dialogAddSubordinate;
 }
 
+/* Метод считает зарплату для всех сотрудников
+ * */
 void MainWindow::on_allSalaryButton_clicked()
 {
     QSqlQuery selectAll;

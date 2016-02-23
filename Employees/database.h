@@ -35,8 +35,6 @@ public:
      * Подключение к базе данных и вставка записей в таблицу
      * */
     void connectToDataBase();
-    bool inserIntoEmployeeTable(const QVariantList &data);
-//    QString findData(QString sqlQuery, QString column);
 
 private:
     // Сам объект базы данных, с которым будет производиться работа
