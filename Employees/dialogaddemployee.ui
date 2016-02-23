@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>266</width>
-    <height>259</height>
+    <height>260</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -103,7 +103,7 @@
        <item>
         <widget class="QLineEdit" name="hireDateLineEdit">
          <property name="inputMask">
-          <string>00-00-0000</string>
+          <string/>
          </property>
         </widget>
        </item>

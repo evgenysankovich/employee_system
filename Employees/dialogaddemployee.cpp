@@ -78,6 +78,23 @@ void DialogAddEmployee::setupModel()
  * */
 void DialogAddEmployee::createUI()
 {
+    QRegExp surnameRegex ("^[а-яА-ЯёЁa-zA-Z. -]+");
+    QRegExpValidator *surVal = new QRegExpValidator(surnameRegex, this);
+    ui->surnameLineEdit->setValidator(surVal);
+
+    QRegExp dateRegex ("^(((0[1-9]|[12]\\d|3[01])\\.(0[13578]|1[02])\\."
+                       "((19|[2-9]\\d)\\d{2}))|((0[1-9]|[12]\\d|30)\\."
+                       "(0[13456789]|1[012])\\.((19|[2-9]\\d)\\d{2}))|"
+                       "((0[1-9]|1\\d|2[0-8])\\.02\\.((19|[2-9]\\d)\\d{2}))|"
+                       "(29\\.02\\.((1[6-9]|[2-9]\\d)(0[48]|[2468][048]|[13579][26])|"
+                       "((16|[2468][048]|[3579][26])00))))$");
+    QRegExpValidator *dateVal = new QRegExpValidator(dateRegex, this);
+    ui->hireDateLineEdit->setValidator(dateVal);
+
+    QRegExp baseSalaryRegex ("\\-?\\d+(\\.\\d{0,})? ");
+    QRegExpValidator *baseSalaryVal = new QRegExpValidator(baseSalaryRegex, this);
+    ui->baseSalaryLineEdit->setValidator(baseSalaryVal);
+
 //    QString ipRange = "(?:[0-1]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])";
 //    QRegExp ipRegex ("^" + ipRange
 //                     + "\\." + ipRange
