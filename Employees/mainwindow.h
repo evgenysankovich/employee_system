@@ -27,12 +27,10 @@ private slots:
     void slotUpdateModels();
     void slotEditRecord(QModelIndex index);
 
-    void on_ClearButton_clicked();
-
-    void on_ShowEmployeeButton_clicked();
+//    void on_ClearButton_clicked();
+//    void on_ShowEmployeeButton_clicked();
 
     void on_addSubordinateButton_clicked();
-
     void on_allSalaryButton_clicked();
 
 private:

@@ -33,7 +33,7 @@
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>../ico/male.ico</normaloff>../ico/male.ico</iconset>
+          <normaloff>ico/male.ico</normaloff>ico/male.ico</iconset>
         </property>
         <property name="autoDefault">
          <bool>false</bool>
@@ -59,61 +59,7 @@
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>../ico/boss.ico</normaloff>../ico/boss.ico</iconset>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButton_7">
-        <property name="minimumSize">
-         <size>
-          <width>141</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Посмотреть подчиненных</string>
-        </property>
-        <property name="icon">
-         <iconset>
-          <normaloff>../ico/user group.ico</normaloff>../ico/user group.ico</iconset>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="ShowEmployeeButton">
-        <property name="minimumSize">
-         <size>
-          <width>141</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Показать сотрудников</string>
-        </property>
-        <property name="icon">
-         <iconset>
-          <normaloff>../ico/eye.ico</normaloff>../ico/eye.ico</iconset>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="ClearButton">
-        <property name="minimumSize">
-         <size>
-          <width>141</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Отчистить окно</string>
-        </property>
-        <property name="icon">
-         <iconset>
-          <normaloff>../ico/person.ico</normaloff>../ico/person.ico</iconset>
-        </property>
-        <property name="shortcut">
-         <string notr="true"/>
+          <normaloff>ico/boss.ico</normaloff>ico/boss.ico</iconset>
         </property>
        </widget>
       </item>
@@ -170,7 +116,7 @@
       </property>
       <property name="icon">
        <iconset>
-        <normaloff>../ico/calculator.ico</normaloff>../ico/calculator.ico</iconset>
+        <normaloff>ico/calculator.ico</normaloff>ico/calculator.ico</iconset>
       </property>
      </widget>
     </item>
@@ -190,23 +136,6 @@
     <item row="2" column="2">
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <widget class="QPushButton" name="pushButton_4">
-        <property name="minimumSize">
-         <size>
-          <width>141</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Сменить пользователя</string>
-        </property>
-        <property name="icon">
-         <iconset>
-          <normaloff>../ico/sync.ico</normaloff>../ico/sync.ico</iconset>
-        </property>
-       </widget>
-      </item>
-      <item>
        <widget class="QPushButton" name="pushButton_5">
         <property name="minimumSize">
          <size>
@@ -219,7 +148,7 @@
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>../ico/close.ico</normaloff>../ico/close.ico</iconset>
+          <normaloff>ico/close.ico</normaloff>ico/close.ico</iconset>
         </property>
        </widget>
       </item>

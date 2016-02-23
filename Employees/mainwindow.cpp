@@ -86,10 +86,8 @@ void MainWindow::on_AddEmployeeButton_clicked()
 
     /* Выполняем запуск диалогового окна
      * */
-    addEmployeeDialog->setWindowTitle(trUtf8("Добавить подчиненного"));
-    addEmployeeDialog->exec();
-    //    addEmployeeDialog-
-    //    addEmployeeDialog->close();
+    addEmployeeDialog->setWindowTitle("Добавить подчиненного");
+    addEmployeeDialog->exec();   
 }
 
 /* Слот обновления модели представления данных
@@ -113,19 +111,19 @@ void MainWindow::slotEditRecord(QModelIndex index)
 
     /* Выполняем запуск диалогового окна
      * */
-    addEmployeeDialog->setWindowTitle(trUtf8("Редактировать подчиненного"));
+    addEmployeeDialog->setWindowTitle("Редактировать подчиненного");
     addEmployeeDialog->exec();
 }
 
-void MainWindow::on_ClearButton_clicked()
-{
-    ui->EmployeeTableView->setModel(NULL);     // Устанавливаем модель на TableView
-}
+//void MainWindow::on_ClearButton_clicked()
+//{
+//    ui->EmployeeTableView->setModel(NULL);     // Устанавливаем модель на TableView
+//}
 
-void MainWindow::on_ShowEmployeeButton_clicked()
-{
-    createUI();
-}
+//void MainWindow::on_ShowEmployeeButton_clicked()
+//{
+//    createUI();
+//}
 
 void MainWindow::insertBossId(QString surnameSubordinate, QString surnameBoss)
 {
@@ -284,7 +282,7 @@ QString MainWindow::findData(QString sqlQuery, QString column)
 }
 
 void MainWindow::on_addSubordinateButton_clicked()
-{    
+{
     DialogAddSubordinate *dialogAddSubordinate = new DialogAddSubordinate();
     dialogAddSubordinate->setWindowTitle("Добавить подчиненного");
     if (dialogAddSubordinate->exec() == QDialog::Accepted) {

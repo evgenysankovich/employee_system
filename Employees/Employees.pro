@@ -36,5 +36,6 @@ FORMS    += mainwindow.ui \
     dialogaddsubordinate.ui
 
 RESOURCES +=
+RC_FILE = myapp.rc
 
 CONFIG += c++11
